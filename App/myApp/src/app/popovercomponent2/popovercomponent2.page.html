@@ -1,0 +1,13 @@
+<ion-content>
+  <ion-list>
+    <ion-item (click)="clickGenre('Action')" (click)="presentModal()" button>Action</ion-item>
+    <ion-item (click)="clickGenre('Sports')" (click)="presentModal()" button>Sports</ion-item>
+    <ion-item (click)="clickGenre('Role-Playing')" (click)="presentModal()" button>Role-Playing</ion-item>
+    <ion-item (click)="clickGenre('Fighting')" (click)="presentModal()" button>Fighting</ion-item>
+    <ion-item (click)="clickGenre('Adventure')" (click)="presentModal()" button>Adventure</ion-item>
+    <ion-item (click)="clickGenre('Platform')" (click)="presentModal()" button>Platform</ion-item>
+    <ion-item (click)="clickGenre('Racing')" (click)="presentModal()" button>Racing</ion-item>
+    <ion-item (click)="clickGenre('Shooter')" (click)="presentModal()" button>Shooter</ion-item>
+    <ion-item color="danger" lines="none" detail="false" button (click)="closePopover()">Close</ion-item>
+  </ion-list>
+</ion-content>

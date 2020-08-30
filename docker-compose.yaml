@@ -1,0 +1,42 @@
+version: "3"
+services:
+  app:
+    container_name: rubyserver
+    restart: always
+    build: ./
+    ports:
+      - "4567:4567"
+    volumes:
+      - .:/app
+    depends_on:
+      - mongodb
+  mongodb:
+    image: 'mongo:latest'
+    restart: always
+    environment:
+      - MONGO_INITDB_DATABASE=mydb
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=root
+    ports:
+      - "27017:27017"
+    volumes:
+      - './mongo-volume:/data/rubyserver_db'
+  ionic:
+    image: 'beevelop/ionic:latest'
+    restart: always
+    ports:
+        - "3000:3000"
+        - "35729:35729"
+        - "8100:8100"
+    volumes:
+        - './App/myApp:/opt/App'
+    working_dir: /opt/App
+    command: ionic serve --port 8100 --address=0.0.0.0
+    depends_on:
+        - app
+
+
+
+volumes:
+  mongodb_data:
+    driver: local

@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-row>
+      <ion-col class="ion-padding-top"><ion-searchbar search-icon="none" (ionChange)="passingValues($event.target.value)" class="ion-no-padding" placeholder="Text search..." >
+        <ion-button color="medium" (click)="clickSearchBar()" (click)="presentModal()">
+          <ion-icon slot="icon-only" name="search-outline"></ion-icon>
+        </ion-button>
+      </ion-searchbar></ion-col>
+      <ion-col class="ion-padding-top"><ion-searchbar search-icon="none" (ionChange)="passingJaccardValues($event.target.value)" class="ion-no-padding" placeholder="Jaccard search..." >
+        <ion-button color="medium" (click)="clickJaccardSearchBar()" (click)="presentModal()">
+          <ion-icon slot="icon-only" name="search-outline"></ion-icon>
+        </ion-button>
+      </ion-searchbar></ion-col>
+      <ion-list>
+        <button ion-item *ngFor="let data of games2">{{data.Name}}</button>
+      </ion-list>
+    </ion-row>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="background-site">
+
+  <div slot='fixed' class="greedy">
+      <ion-card class="custom-card">
+        <ion-card-header>
+          <ion-card-title style="color: #e9b55c;">Filter
+            <ion-icon style="color: #e9b55c;" name="filter-sharp"></ion-icon>
+          </ion-card-title>
+        </ion-card-header>
+        <ion-card-content style="color: #3880ff;" (click)="clickPlatform()" (click)="presentPopoverPlatform($event)">
+          <b>Platform</b>
+        </ion-card-content>
+        <ion-card-content style="color: #2dd36f;" (click)="clickGenre()" (click)="presentPopoverGenre($event)">
+          <b>Genre</b>
+        </ion-card-content>
+      </ion-card>
+  </div>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="8" offset="4">
+        <ion-card *ngFor="let game of games">
+          <ion-card-header>
+            <ion-card-title>{{game.Name}}</ion-card-title>
+          </ion-card-header>
+          <ion-img [src]="game.Image"></ion-img>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>
